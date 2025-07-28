@@ -1,27 +1,22 @@
 package boardgame;
 
-public class Position {
+public class Board {
     //Attributes
         private int row;
         private int colum;
+        private Piece[][] pieces;
 
     //Constructors
-        public Position() {
+        public Board() {
         }
-        public Position(int row, int colum) {
+        public Board(int row, int colum) {
             this.row = row;
             this.colum = colum;
+            this.pieces = new Piece[row][colum];
         }
 
     //Methods
         //Getters and Setters
-        public int getColum() {
-            return colum;
-        }
-        public void setColum(int colum) {
-            this.colum = colum;
-        }
-
         public int getRow() {
             return row;
         }
@@ -29,9 +24,10 @@ public class Position {
             this.row = row;
         }
 
-        //ToString
-        @Override
-        public String toString() {
-            return "Position: ROW["+row+"] COLUM["+colum+"]";
+        public int getColum() {
+            return colum;
+        }
+        public void setColum(int colum) {
+            this.colum = colum;
         }
 }
