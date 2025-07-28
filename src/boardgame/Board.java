@@ -16,6 +16,14 @@ public class Board {
         }
 
     //Methods
+        public Piece piece(int row, int colum) {
+            return this.pieces[row][colum];
+        }
+
+        public Piece piece(Position position) {
+            return pieces[position.getRow()][position.getColum()];
+        }
+
         //Getters and Setters
         public int getRow() {
             return row;
