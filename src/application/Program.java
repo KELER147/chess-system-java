@@ -1,5 +1,7 @@
 package application;
 import chess.ChessMatch;
+import chess.ChessPiece;
+import chess.ChessPosition;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -20,8 +22,16 @@ public class Program {
             GameInfo.showTutorial(lang);
         }
         ChessMatch chessMatch = new ChessMatch();
-        UI.printBoard(chessMatch.getPieces());
 
-        sc.close();
+        while (true){
+            UI.printBoard(chessMatch.getPieces());
+            System.out.println();
+            sc.nextLine();
+            System.out.print("Source: ");
+            ChessPosition source = UI.readChessPosition(sc);
+            System.out.print("Destination: ");
+            ChessPosition target = UI.readChessPosition(sc);
+            ChessPiece capturedPiece = chessMatch.performaChessMove(source, target);
+        }
     }
 }

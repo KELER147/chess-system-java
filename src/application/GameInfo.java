@@ -1,12 +1,5 @@
 package application;
-
-// Adicione este import para a classe UI, para que as constantes de cor funcionem
-import application.UI;
-
-// Classe dedicada a imprimir informações, legendas e tutoriais do jogo.
 public class GameInfo {
-
-    // Adicione esta constante para os subtítulos do tutorial
     public static final String ANSI_CYAN = "\u001B[36m";
 
     public static void clearScreen() {
@@ -14,7 +7,6 @@ public class GameInfo {
         System.out.flush();
     }
 
-    // SEU MÉTODO PRINTLEGEND - EXATAMENTE COMO VOCÊ MANDOU
     public static void printLegend() {
         System.out.println();
         System.out.println(UI.ANSI_RED + ("=======================================") + UI.ANSI_RESET);
@@ -48,7 +40,6 @@ public class GameInfo {
         System.out.println("=======================================");
     }
 
-    // MÉTODOS DO TUTORIAL COM SUBTÍTULOS COLORIDOS
     private static void printGeneralRules_PT() {
         clearScreen();
         System.out.println("=======================================");

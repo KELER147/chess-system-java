@@ -1,35 +1,40 @@
 package application;
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
 
-    // Códigos de Cores ANSI (Cores de Texto/Peças)
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_WHITE = "\u001B[37m";
 
-    // Códigos de Cores ANSI (Cores de Fundo/Tabuleiro)
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m"; // Fundo claro (Branco)
-    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m"; // Fundo escuro (Preto)
+    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+
+    public static ChessPosition readChessPosition(Scanner sc) {
+        try {
+            String s = sc.nextLine();
+            char column = s.charAt(0);
+            int row = Integer.parseInt(s.substring(1));
+            return new ChessPosition(column, row);
+        } catch (RuntimeException e) {
+            throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
+        }
+    }
 
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i = 0; i < pieces.length; i++) {
-            // Imprime o número da linha
             System.out.print(ANSI_PURPLE + (8 - i) + " " + ANSI_RESET);
-
-            // Itera e imprime cada célula da linha
             for (int j = 0; j < pieces[i].length; j++) {
                 printPiece(pieces[i][j], i, j);
             }
-
-            // IMPORTANTE: Reseta a cor no final de cada linha para evitar que a cor de fundo "vaze"
             System.out.println(ANSI_RESET);
         }
-        // Imprime as letras das colunas, com espaçamento duplo para alinhar com o centro das casas
         System.out.println(ANSI_PURPLE + "  a  b  c  d  e  f  g  h" + ANSI_RESET);
     }
 
