@@ -12,10 +12,10 @@ public class Program {
         GameInfo.printLegend();
 
         // PERGUNTA SE O USUÁRIO QUER VER O TUTORIAL
-        System.out.print("\nDeseja ver o tutorial de como jogar? (s/n): ");
+        System.out.print( UI.ANSI_PURPLE + "\nDeseja ver o tutorial de como jogar? (s/n): " + UI.ANSI_RESET);
         char response = sc.next().charAt(0);
         if (response == 's' || response == 'S') {
-            System.out.print("Escolha o idioma (pt/en): ");
+            System.out.print("Escolha o idioma (pt/en): " + UI.ANSI_RESET);
             String lang = sc.next();
             GameInfo.showTutorial(lang); // Chama o tutorial no idioma escolhido
         }
