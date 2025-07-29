@@ -102,17 +102,17 @@ public class GameInfo {
         System.out.println("        PIECE MOVEMENTS");
         System.out.println("=======================================");
 
-        System.out.println(ANSI_CYAN + "\n--- KING (♔ ♚) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- KING (♔) ---" + UI.ANSI_RESET);
         System.out.println("Moves one square in any direction.");
-        System.out.println(ANSI_CYAN + "\n--- QUEEN (♕ ♛) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- QUEEN (♕) ---" + UI.ANSI_RESET);
         System.out.println("The most powerful piece. Moves any number of squares in any direction.");
-        System.out.println(ANSI_CYAN + "\n--- ROOK (♖ ♜) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- ROOK (♖) ---" + UI.ANSI_RESET);
         System.out.println("Moves any number of squares horizontally or vertically.");
-        System.out.println(ANSI_CYAN + "\n--- BISHOP (♗ ♝) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- BISHOP (♗) ---" + UI.ANSI_RESET);
         System.out.println("Moves any number of squares diagonally.");
-        System.out.println(ANSI_CYAN + "\n--- KNIGHT (♘ ♞) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- KNIGHT (♘) ---" + UI.ANSI_RESET);
         System.out.println("Moves in an 'L' shape and can jump over other pieces.");
-        System.out.println(ANSI_CYAN + "\n--- PAWN (♙ ♟) ---" + UI.ANSI_RESET);
+        System.out.println(ANSI_CYAN + "\n--- PAWN (♙) ---" + UI.ANSI_RESET);
         System.out.println(" - Movement: Moves one square forward. Can move two on its first move.");
         System.out.println(" - Capture: Captures opponent's pieces diagonally.");
     }

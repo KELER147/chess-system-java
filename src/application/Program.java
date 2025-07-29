@@ -17,7 +17,7 @@ public class Program {
         if (response == 's' || response == 'S') {
             System.out.print("Escolha o idioma (pt/en): " + UI.ANSI_RESET);
             String lang = sc.next();
-            GameInfo.showTutorial(lang); // Chama o tutorial no idioma escolhido
+            GameInfo.showTutorial(lang);
         }
         ChessMatch chessMatch = new ChessMatch();
         UI.printBoard(chessMatch.getPieces());
