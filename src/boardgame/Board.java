@@ -18,7 +18,6 @@ public class Board {
 
     //Methods
         public void placePiece(Piece piece, Position position) {
-
             if (thereIsPiece(position)) {
                 throw new BoardException("There is already a piece on position!" + position);
             }
