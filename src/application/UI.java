@@ -1,7 +1,6 @@
 package application;
 import chess.ChessPiece;
-
-import java.util.ArrayList;
+import chess.Color;
 
 public class UI {
     public static void printBoard(ChessPiece[][] pieces) {
@@ -14,12 +13,17 @@ public class UI {
         }
         System.out.println("  a b c d e f g h");
     }
+
     private static void printPiece(ChessPiece piece, int row, int col) {
         if (piece == null) {
-            if ((row + col) %2 == 0) {
-                System.out.print("■");
-            } else System.out.print("□");
-        } else System.out.print(piece);
-        System.out.print(" ");
+            if ((row + col) % 2 == 0) {
+                System.out.print("ﾠ □");
+            } else {
+                System.out.print("ﾠ ■");
+            }
+        }
+        else {
+            System.out.print(" ﾠ" + piece);
+        }
     }
 }

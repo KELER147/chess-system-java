@@ -4,16 +4,18 @@ import boardgame.Piece;
 
 public class ChessPiece extends Piece {
     //Attributes
-        private Color color;
+    private Color color;
 
     //Constructors
-        public ChessPiece(Board board, Color color) {
-            super(board);
-        }
+    public ChessPiece(Board board, Color color) {
+        super(board);
+        this.color = color;
+    }
 
     //Methods
-        //Getters and Setters
-        public Color getColor() {
-            return color;
-        }
+    //Getters and Setters
+    public Color getColor() {
+        return color;
+    }
+
 }
