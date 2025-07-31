@@ -24,11 +24,11 @@ public class ChessMatch {
             }
             return mat;
         }
-
         public ChessPiece performaChessMove(ChessPosition sourcePosition,  ChessPosition targetPosition){
             Position source = sourcePosition.toPosition();
             Position target = targetPosition.toPosition();
             validateSourcePosition(source);
+            validateTargetPosition(source, target);
             Piece capturedPiece = makeMove(source, target);
             return (ChessPiece)  capturedPiece;
         }
@@ -49,9 +49,18 @@ public class ChessMatch {
             }
         }
 
+        private void validateTargetPosition(Position source, Position target){
+            if (!board.piece(source).possibleMove(target)) {
+                throw new ChessException("there chosen piece can't move to target position");
+            }
+        }
+
         private void placeNewPiece(char colum, int row, ChessPiece piece) {
             board.placePiece(piece, new ChessPosition(colum,row).toPosition());
         }
+
+
+
 
         private void initialSetup() {
             placeNewPiece('a', 8, new Rook(board, Color.RED));
@@ -75,7 +84,7 @@ public class ChessMatch {
 
 
 
-            placeNewPiece('a', 1, new Rook(board, Color.BLUE));
+            placeNewPiece('a', 3, new Rook(board, Color.BLUE));
             placeNewPiece('b', 1, new Knight(board, Color.BLUE));
             placeNewPiece('c', 1, new Bishop(board, Color.BLUE));
             placeNewPiece('d', 1, new King(board, Color.BLUE));
