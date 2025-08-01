@@ -6,15 +6,24 @@ import chess.pieces.*;
 
 public class ChessMatch {
     //Attributes
+        private int turn;
+        private Color currentPlayer;
         private Board board;
 
     //Constructors
     public ChessMatch(){
         this.board = new Board(8, 8);
+        turn = 1;
+        currentPlayer = Color.RED;
         initialSetup();
     }
 
     //Methods
+        private void nextTurn(){
+            turn++;
+            currentPlayer = (currentPlayer == Color.RED) ? Color.BLUE : Color.RED;
+        }
+
         public ChessPiece[][] getPieces(){
             ChessPiece[][] mat = new ChessPiece[board.getRow()][board.getColum()];
             for (int i = 0; i < board.getRow(); i++) {
@@ -30,6 +39,7 @@ public class ChessMatch {
             validateSourcePosition(source);
             validateTargetPosition(source, target);
             Piece capturedPiece = makeMove(source, target);
+            nextTurn();
             return (ChessPiece)  capturedPiece;
         }
 
@@ -49,6 +59,9 @@ public class ChessMatch {
         private void validateSourcePosition(Position position){
             if(!board.thereIsPiece(position)){
                 throw new ChessException("There is no piece on source position");
+            }
+            if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+                throw new ChessException("The chosen piece is not yours");
             }
             if (!board.piece(position).isThereAnyPossibleMove()) {
                 throw new ChessException("There is no possible moves for the chosen piece");
@@ -70,7 +83,7 @@ public class ChessMatch {
             placeNewPiece('a', 8, new Rook(board, Color.RED));
             placeNewPiece('b', 8, new Knight(board, Color.RED));
             placeNewPiece('c', 8, new Bishop(board, Color.RED));
-            placeNewPiece('d', 8, new King(board, Color.RED));
+            placeNewPiece('d', 6, new King(board, Color.RED));
             placeNewPiece('e', 8, new Queen(board, Color.RED));
             placeNewPiece('f', 8, new Bishop(board, Color.RED));
             placeNewPiece('g', 8, new Knight(board, Color.RED));
@@ -105,9 +118,14 @@ public class ChessMatch {
             placeNewPiece('f', 2, new Pawn(board, Color.BLUE));
             placeNewPiece('g', 2, new Pawn(board, Color.BLUE));
             placeNewPiece('h', 2, new Pawn(board, Color.BLUE));
+        }
 
+        //Getters
+        public Color getCurrentPlayer() {
+            return currentPlayer;
+        }
 
-
-
+        public int getTurn() {
+            return turn;
         }
 }
