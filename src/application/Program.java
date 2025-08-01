@@ -40,7 +40,6 @@ public class Program {
                 ChessPiece capturedPiece = chessMatch.performaChessMove(source, target);
             } catch (ChessException | InputMismatchException e) {
                 System.out.println(e.getMessage());
-                sc.nextLine();
             }
         }
     }
