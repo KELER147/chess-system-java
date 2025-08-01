@@ -4,8 +4,8 @@ import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UI {
 
@@ -13,8 +13,6 @@ public class UI {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_WHITE = "\u001B[97m";
     public static final String ANSI_GREEN_BRIGHT = "\u001B[92m";
 
 
@@ -38,11 +36,12 @@ public class UI {
         }
     }
 
-    public static void printMatch(ChessMatch chessMatch) {
+    public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
         printBoard(chessMatch.getPieces());
+        printCapturedPieces(captured);
         System.out.println();
         System.out.println("Turn: " + chessMatch.getTurn());
-        System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+        System.out.print("Waiting player: " + ((chessMatch.getCurrentPlayer() == Color.RED) ? ANSI_RED : ANSI_BLUE) +  chessMatch.getCurrentPlayer() + ANSI_RESET);
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
@@ -90,4 +89,17 @@ public class UI {
         System.out.print(ANSI_RESET);
     }
 
+    private static void printCapturedPieces(List<ChessPiece> captured) {
+        List<ChessPiece> red = captured.stream().filter(p -> p.getColor() == Color.RED).toList();
+        List<ChessPiece> blue = captured.stream().filter(p -> p.getColor() == Color.BLUE).toList();
+        System.out.println("Captured Pieces:");
+        System.out.print(ANSI_RED);
+        System.out.print("Red:");
+        System.out.print(Arrays.toString(red.toArray()));
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_BLUE);
+        System.out.print("Blue:");
+        System.out.print(Arrays.toString(blue.toArray()));
+        System.out.print(ANSI_RESET);
+    }
 }
