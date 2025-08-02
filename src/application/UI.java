@@ -86,6 +86,8 @@ public class UI {
             System.out.print(" " + ANSI_GREEN_BRIGHT + "◉ ");
         } else if (piece == null) {
             System.out.print("   ");
+        } else if (backGround && piece != null) {
+            System.out.print(ANSI_GREEN_BRIGHT + " " + piece + " ");
         } else {
             if (piece.getColor() == Color.RED) {
                 System.out.print(ANSI_RED + " " + piece + " ");
