@@ -38,6 +38,16 @@ public class Program {
                 if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
+                if (chessMatch.getPromoted() != null) {
+                    System.out.println("Promotion!:");
+                    System.out.println("♝ = B");
+                    System.out.println("♞ = N");
+                    System.out.println("♜ = R");
+                    System.out.println("♛ = Q");
+                    System.out.print("Enter piece for promotion:");
+                    String type = sc.next();
+                    chessMatch.replacePromotedPiece(type);
+                }
             } catch (ChessException | InputMismatchException e) {
                 System.out.println(e.getMessage());
             }
