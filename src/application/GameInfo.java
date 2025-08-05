@@ -31,13 +31,16 @@ public class GameInfo {
         if ("pt".equalsIgnoreCase(language)) {
             printGeneralRules_PT();
             printPieceRules_PT();
+            System.out.println("\n=======================================");
+            System.out.println("       TUTORIAL CONCLUÍDO");
+            System.out.println("=======================================");
         } else {
             printGeneralRules_EN();
             printPieceRules_EN();
+            System.out.println("\n=======================================");
+            System.out.println("       TUTORIAL COMPLETED");
+            System.out.println("=======================================");
         }
-        System.out.println("\n=======================================");
-        System.out.println("       TUTORIAL CONCLUÍDO");
-        System.out.println("=======================================");
     }
 
     private static void printGeneralRules_PT() {
@@ -73,6 +76,10 @@ public class GameInfo {
         System.out.println(ANSI_CYAN + "\n--- PEÃO (♙ ♟) ---" + UI.ANSI_RESET);
         System.out.println(" - Movimento: Move-se uma casa para frente. Pode mover duas no primeiro lance.");
         System.out.println(" - Captura: Captura peças adversárias na diagonal.");
+        System.out.println(ANSI_CYAN + "\n\n--- JOGADAS ESPECIAIS ---" + UI.ANSI_RESET);
+        System.out.println(" - Roque (Castling): Movimento especial entre o rei e a torre, onde o rei se move duas casas em direção à torre e a torre salta por cima do rei.");
+        System.out.println(" - Promoção: Quando um peão alcança a última fileira do tabuleiro, ele é promovido a qualquer outra peça.");
+        System.out.println(" - En Passant: Um peão pode capturar um peão adversário que acabou de avançar duas casas, passando por uma casa ameaçada.");
     }
 
     private static void printGeneralRules_EN() {
@@ -106,5 +113,9 @@ public class GameInfo {
         System.out.println(ANSI_CYAN + "\n--- PAWN (♙) ---" + UI.ANSI_RESET);
         System.out.println(" - Movement: Moves one square forward. Can move two on its first move.");
         System.out.println(" - Capture: Captures opponent's pieces diagonally.");
+        System.out.println(ANSI_CYAN + "\n\n--- SPECIAL MOVES ---" + UI.ANSI_RESET);
+        System.out.println(" - Castling: A special move between the king and a rook, where the king moves two squares toward the rook and the rook jumps over the king.");
+        System.out.println(" - Promotion: When a pawn reaches the opposite end of the board, it is promoted to another piece.");
+        System.out.println(" - En Passant: A pawn may capture an opponent's pawn that just moved two squares forward from its starting position.");
     }
 }

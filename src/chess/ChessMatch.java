@@ -3,11 +3,9 @@ import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
 import chess.pieces.*;
-
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class ChessMatch {
     //Attributes
@@ -83,8 +81,8 @@ public class ChessMatch {
             if (promoted == null) {
                 throw new IllegalStateException("There is no piece to be promoted");
             }
-            if (!type.equalsIgnoreCase("B") && !type.equalsIgnoreCase("N") && !type.equalsIgnoreCase("R") && !type.equalsIgnoreCase("Q")) {
-                throw new InvalidParameterException("Invalid type for promotion");
+            if (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+                return promoted;
             }
 
             Position pos = promoted.getChessPosition().toPosition();
@@ -98,9 +96,9 @@ public class ChessMatch {
         }
 
         private ChessPiece newPiece(String type, Color color) {
-            if (type.equalsIgnoreCase("B")) return new Bishop(board, color);
-            if (type.equalsIgnoreCase("N")) return new Knight(board, color);
-            if (type.equalsIgnoreCase("R")) return new Rook(board, color);
+            if (type.equals("B")) return new Bishop(board, color);
+            if (type.equals("N")) return new Knight(board, color);
+            if (type.equals("R")) return new Rook(board, color);
             return new Queen(board, color);
         }
 
@@ -301,7 +299,7 @@ public class ChessMatch {
             placeNewPiece('d', 2, new Pawn(board, Color.RED,this));
             placeNewPiece('e', 2, new Pawn(board, Color.RED,this));
             placeNewPiece('f', 2, new Pawn(board, Color.RED,this));
-            placeNewPiece('g', 2, new Pawn(board, Color.RED,this));
+            placeNewPiece('g', 6, new Pawn(board, Color.RED,this));
             placeNewPiece('h', 2, new Pawn(board, Color.RED,this));
         }
 

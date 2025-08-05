@@ -11,10 +11,10 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         GameInfo.printLegend();
-        System.out.print( UI.ANSI_PURPLE + "\nDeseja ver o tutorial de como jogar? (s/n): " + UI.ANSI_RESET);
-        char response = sc.next().charAt(0);
-        if (response == 's' || response == 'S') {
-            System.out.print("Escolha o idioma (pt/en): " + UI.ANSI_RESET);
+        System.out.print( UI.ANSI_PURPLE + "\nDeseja ver o tutorial de como jogar? (s/n):\nDo you want to see the tutorial on how to play? (y/n): " + UI.ANSI_RESET);
+        char response = sc.next().toUpperCase().charAt(0);
+        if (response == 'S' || response == 'Y') {
+            System.out.print("Language: (pt/en): " + UI.ANSI_RESET);
             String lang = sc.next();
             GameInfo.showTutorial(lang);
         }
@@ -45,7 +45,11 @@ public class Program {
                     System.out.println("♜ = R");
                     System.out.println("♛ = Q");
                     System.out.print("Enter piece for promotion:");
-                    String type = sc.next();
+                    String type = sc.next().toUpperCase();
+                    while (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+                        System.out.print("Invalid Value!\nEnter piece for promotion:");
+                        type = sc.next().toUpperCase();
+                    }
                     chessMatch.replacePromotedPiece(type);
                 }
             } catch (ChessException | InputMismatchException e) {
